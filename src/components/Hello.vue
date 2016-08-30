@@ -122,7 +122,7 @@ export default {
         var _index = this.list.indexOf(item);
         if(_index!=-1){
           this.list.splice(_index,1);
-          
+          console.log(111)
         }
       }
     }
