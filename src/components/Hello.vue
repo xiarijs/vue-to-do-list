@@ -1,28 +1,50 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <div>
-      姓名：<input type="text" style=" width:50px;" v-model="data.name">
-      姓别：<label for="nan"><input type="radio" id="nan" name="sex">男</label><label for="nv"><input type="radio" id="nv" name="sex">女</label>
-      班级：<select name="" id=""><option>请选择</option><option>一年级</option><option>二年级</option><option>三年级</option></select>
-      年龄：<input type="text" style=" width:50px;">
-      <input type="button" value="添加">
-    </div>
+    <table cellpadding="0" cellspacing="0" border="0" class="add_table">
+      <tbody>
+        <tr>
+          <td>名称</td>
+          <td class="tl"><input type="text" v-model="data.name"></td>
+          <td>图片</td>
+          <td colspan="3" class="tl"><input type="text" v-model="data.img"></td>
+        </tr>
+        <tr>
+          <td>链接</td>
+          <td class="tl"><input type="text" v-model="data.url"></td>
+          <td>楼层位置</td>
+          <td class="tl"><input type="text" v-model="data.floor"></td>
+          <td>旺旺ID</td>
+          <td class="tl"><input type="text" v-model="data.wangwang"></td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <a href="javascript:;">保存</a>
+            <a href="javascript:;">清空</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>{{ msg2 }}</h1>
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
-          <th>姓名</th>
-          <th>性别</th>
-          <th>班级</th>
-          <th>年龄</th>
+          <th>名称</th>
+          <th>图片</th>
+          <th>链接</th>
+          <th>楼层位置</th>
+          <th>旺旺ID</th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in list">
           <td v-text="item.name"></td>
-          <td v-text="item.sex"></td>
-          <td v-text="item.cname"></td>
-          <td v-text="item.age"></td>
+          <td v-text="item.img"></td>
+          <td><a href="{{item.url}}" target="_blank" v-text="item.url"></a></td>
+          <td v-text="item.floor"></td>
+          <td v-text="item.wangwang"></td>
+          <td><a href="javascript:;" title="删除" v-on:click="deleteData(item)">x</a></td>
         </tr>
       </tbody>
     </table>
@@ -33,51 +55,76 @@
 export default {
   data:function () {
     return {
-      msg: 'This is to do list',
-      data : {
-        name : '2',
-        sex  : '',
-        cname: '',
-        age  : ''
+      msg   : '添加商品',
+      msg2  : '商品列表',
+      data  : {
+        name      : '',
+        img       : '',
+        url       : '',
+        floor     : '',
+        wangwang  : ''
       },
       list: [
           {
-            name  : '张三',
-            sex   : '男',
-            cname : '一年级',
-            age   : '8' 
+            id        : 1,
+            name      : '商品名称',
+            img       : 'image.png',
+            url       : 'http://www.baidu.com',
+            floor     : '一年级',
+            wangwang  : 'test'
           },
           {
-            name  : '张三',
-            sex   : '男',
-            cname : '一年级',
-            age   : '8' 
+            id        : 2,
+            name      : '商品名称',
+            img       : 'image.png',
+            url       : 'http://www.baidu.com',
+            floor     : '一年级',
+            wangwang  : 'test'
           },
           {
-            name  : '张三',
-            sex   : '男',
-            cname : '一年级',
-            age   : '8' 
+            id        : 3,
+            name      : '商品名称',
+            img       : 'image.png',
+            url       : 'http://www.baidu.com',
+            floor     : '一年级',
+            wangwang  : 'test'
           },
           {
-            name  : '张三',
-            sex   : '男',
-            cname : '一年级',
-            age   : '8' 
+            id        : 4,
+            name      : '商品名称',
+            img       : 'image.png',
+            url       : 'http://www.baidu.com',
+            floor     : '一年级',
+            wangwang  : 'test'
           },
           {
-            name  : '张三',
-            sex   : '男',
-            cname : '一年级',
-            age   : '8' 
+            id        : 5,
+            name      : '商品名称',
+            img       : 'image.png',
+            url       : 'http://www.baidu.com',
+            floor     : '一年级',
+            wangwang  : 'test'
           },
           {
-            name  : '张三',
-            sex   : '男',
-            cname : '一年级',
-            age   : '8' 
+            id        : 6,
+            name      : '商品名称',
+            img       : 'image.png',
+            url       : 'http://www.baidu.com',
+            floor     : '一年级',
+            wangwang  : 'test'
           }
       ]
+    }
+  },
+  methods : {
+    deleteData : function(item){
+      if(confirm('删除后不可恢复，确定删除？')){
+        var _index = this.list.indexOf(item);
+        if(_index!=-1){
+          this.list.splice(_index,1);
+          
+        }
+      }
     }
   }
 }
@@ -90,4 +137,7 @@ h1 {
 }
 table{ width: 100%; margin-top: 20px; border-collapse: collapse; }
 table th,table td{ line-height: 32px; border: 1px solid #999; }
+.add_table{ width: 960px; margin: 0 auto; }
+.add_table td{ padding: 5px 10px; }
+.add_table .tl{ text-align: left; }
 </style>
