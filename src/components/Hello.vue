@@ -67,7 +67,7 @@ export default {
       list: [
           {
             id        : 1,
-            name      : '商品名称',
+            name      : '商品名称1',
             img       : 'image.png',
             url       : 'http://www.baidu.com',
             floor     : '一年级',
