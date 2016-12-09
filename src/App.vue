@@ -17,6 +17,7 @@ export default {
 <style>
 html {
   height: 100%;
+
 }
 
 body {
@@ -24,6 +25,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
+  background:red;
 }
 
 #app {
